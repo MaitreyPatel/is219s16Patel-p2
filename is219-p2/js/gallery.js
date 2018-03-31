@@ -49,7 +49,22 @@ var mRequest = new XMLHttpRequest();
 var mImages = [];
 
 // Holds the retrived JSON information
-var mJson = JSON.parse(mRequest.responseText);
+mRequest.onreadystatechange = function() {
+	if (mRequest.readyState == 4 && mRequest.status == 200) {
+		try {
+			var mJson = JSON.parse(mRequest.responseText);
+			for (var i = 0; i < mJson.images.length; i++) {
+				mImages.push(new GalleryImage(mJson.images[i].img, mJson.images[i].location, mJson.images[i].description, mJson.images[i].date));
+			}
+			console.log(mJson.images);
+			console.log(mJson.images[0].img);
+		}
+		catch (err) {
+			console.log(err.message)
+		}
+	}
+};
+				
 mRequest.open("GET", mURL, true);
 mRequest.send();
 

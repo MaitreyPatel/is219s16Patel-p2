@@ -54,7 +54,7 @@ function swapPhoto() {
 	
 	console.log('swap photo');
 	
-	$("photo").attr("src", mImages[mCurrentIndex].path);
+	$("#photo").attr("src", mImages[mCurrentIndex].path);
 	console.log(mImages[mCurrentIndex].path);
 	$(".location").text(location + locationPhoto);
 	$(".description").text(desciption + descripPhoto);

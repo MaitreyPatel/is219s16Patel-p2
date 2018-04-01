@@ -140,6 +140,14 @@ $(document).ready( function() {
 	$('img.moreIndicator').click( function() {
 		$('.deatils').eq(0).toggle();
 	});
+	$(".moreIndicator").click( function(){
+		if( $(".moreIndicator").hasClass("rot90")){
+			$(".moreIndicator").attr("class", "moreIndicator rot270");
+		}
+		else{
+			$(".moreIndicator").attr("class", "moreIndicator rot90");
+		};
+	});
 	
 });
 

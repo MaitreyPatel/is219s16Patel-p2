@@ -137,6 +137,10 @@ $(document).ready( function() {
 	// This initially hides the photos' metadata information
 	$('.details').eq(0).hide();
 	
+	$('img.moreIndicator').click( function() {
+		$('.deatils').eq(0).toggle();
+	});
+	
 });
 
 window.addEventListener('load', function() {

@@ -31,7 +31,7 @@ function animate() {
 }
 
 /************* DO NOT TOUCH CODE ABOVE THIS LINE ***************/
-
+var mCurrentIndex = null;
 function swapPhoto() {
 	//Add code here to access the #slideShow element.
 	//Access the img element and replace its source

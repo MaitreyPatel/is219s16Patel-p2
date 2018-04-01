@@ -48,7 +48,7 @@ function swapPhoto() {
 		mCurrentIndex++;
 	}
 	const location = "Location: ",description = "Description: ",date = "Date: ";
-	var locationPhoto = mImages[mCurrentIndex].locationImg;
+	var locationPhoto = mImages[mCurrentIndex].imgLocation;
 	var descripPhoto = mImages[mCurrentIndex].description;
 	var datePhoto = mImages[mCurrentIndex].date;
 	
@@ -74,7 +74,7 @@ function prevPhoto() {
 		mCurrentIndex--;
 	}
 	const location = "Location: ",description = "Description: ",date = "Date: ";
-	var locationPhoto = mImages[mCurrentIndex].locationImg;
+	var locationPhoto = mImages[mCurrentIndex].imgLocation;
 	var descripPhoto = mImages[mCurrentIndex].description;
 	var datePhoto = mImages[mCurrentIndex].date;
 	
@@ -104,7 +104,7 @@ mRequest.onreadystatechange = function() {
 		try {
 			var mJson = JSON.parse(mRequest.responseText);
 			for (var i = 0; i < mJson.images.length; i++) {
-				mImages.push(new GalleryImage(mJson.images[i].img, mJson.images[i].locationImg, mJson.images[i].description, mJson.images[i].date));
+				mImages.push(new GalleryImage(mJson.images[i].img, mJson.images[i].imgLocation, mJson.images[i].description, mJson.images[i].date));
 			}
 			console.log(mJson.images);
 			console.log(mJson.images[0].img);
@@ -123,7 +123,7 @@ m2Request.onreadystatechange = function() {
       var m2Json = JSON.parse(m2Request.responseText);
 
       for (var i = 0; i < m2Json.images.length; i++){
-      	mImages.push(new GalleryImage(m2Json.images[i].imgPath, m2Json.images[i].locationImg, m2Json.images[i].description, m2Json.images[i].date));
+      	mImages.push(new GalleryImage(m2Json.images[i].imgPath, m2Json.images[i].imgLocation, m2Json.images[i].description, m2Json.images[i].date));
       }
       // Let’s print out the JSON; It will likely show as “obj”
       console.log(m2Json.images);
@@ -192,8 +192,8 @@ window.addEventListener('load', function() {
 
 }, false);
 
-function GalleryImage(locationImg, description, date, img) {
-	this.locationImg = locationImg;
+function GalleryImage(imgLocation, description, date, img) {
+	this.imgLocation = imgLocation;
 	this.description = description;
 	this.date = date;
 	this.img = img;

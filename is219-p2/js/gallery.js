@@ -54,8 +54,8 @@ function swapPhoto() {
 	
 	console.log('swap photo');
 	
-	$("#photo").attr("src", mImages[mCurrentIndex].path);
-	console.log(mImages[mCurrentIndex].path);
+	$("#photo").attr("src", mImages[mCurrentIndex].imgPath);
+	console.log(mImages[mCurrentIndex].imgPath);
 	$(".location").text(location + locationPhoto);
 	$(".description").text(desciption + descripPhoto);
 	$(".date").text(date + datePhoto);
@@ -80,8 +80,8 @@ function prevPhoto() {
 	
 	
 	
-	$("#photo").attr("src", mImages[mCurrentIndex].path);
-	console.log(mImages[mCurrentIndex].path);
+	$("#photo").attr("src", mImages[mCurrentIndex].imgPath);
+	console.log(mImages[mCurrentIndex].imgPath);
 	$(".location").text(location + locationPhoto);
 	$(".description").text(desciption + descripPhoto);
 	$(".date").text(date + datePhoto);
@@ -109,10 +109,10 @@ mRequest.onreadystatechange = function() {
 		try {
 			var mJson = JSON.parse(mRequest.responseText);
 			for (var i = 0; i < mJson.images.length; i++) {
-				mImages.push(new GalleryImage(mJson.images[i].img, mJson.images[i].imgLocation, mJson.images[i].description, mJson.images[i].date));
+				mImages.push(new GalleryImage(mJson.images[i].imgPath, mJson.images[i].imgLocation, mJson.images[i].description, mJson.images[i].date));
 			}
 			console.log(mJson.images);
-			console.log(mJson.images[0].img);
+			console.log(mJson.images[0].imgPath);
 		}
 		catch (err) {
 			console.log(err.message)
@@ -192,11 +192,11 @@ window.addEventListener('load', function() {
 
 }, false);
 
-function GalleryImage(imgLocation, description, date, img) {
+function GalleryImage(imgLocation, description, date, imgPath) {
 	this.imgLocation = imgLocation;
 	this.description = description;
 	this.date = date;
-	this.img = img;
+	this.imgPath = imgPath;
 	//implement me as an object to hold the following data about an image:
 	//1. location where photo was taken
 	//2. description of photo

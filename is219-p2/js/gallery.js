@@ -91,9 +91,14 @@ function prevPhoto() {
 }
 
 
+/* URL for the JSON to load by default */
+// Some options for you are: images.json, images.short.json; you will need to create your own extra.json later
 
 // XMLHttpRequest variable
+var mUrl = 'images.json';
 var mRequest = new XMLHttpRequest();
+
+var m2URL = 'extra.json';
 var m2Request = new XMLHttpRequest();
 // Array holding GalleryImage objects (see below).
 var mImages = [];
@@ -141,11 +146,6 @@ mRequest.send();
 
 m2Request.open("GET", m2URL, true);
 m2Request.send();
-
-/* URL for the JSON to load by default */
-// Some options for you are: images.json, images.short.json; you will need to create your own extra.json later
-var mUrl = 'images.json';
-var m2URL = 'extra.json';
 
 
 //You can optionally use the following function as your event callback for loading the source of Images from your json data (for HTMLImageObject).

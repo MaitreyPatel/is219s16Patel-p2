@@ -37,6 +37,16 @@ function swapPhoto() {
 	//Access the img element and replace its source
 	//with a new image from your images array which is loaded 
 	//from the JSON string
+	if (mCurrentIndex = 0) {
+		mCurrentIndex = 0;
+	}
+	else if (mCurrentIndex == null){
+		mCurrentIndex = 0;
+	}
+	else {
+		mCurrentIndex++;
+		console.log(mCurrentIndex);
+	}
 	const location = "Location: ",description = "Description: ",date = "Date: ";
 	var locationPhoto = mImages[mCurrentIndex].location;
 	var descripPhoto = mImages[mCurrentIndex].description;

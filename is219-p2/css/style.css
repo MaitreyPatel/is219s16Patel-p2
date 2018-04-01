@@ -67,6 +67,7 @@ body {
 #nextPhoto {
 	height: 42px;
 	width: 42px;
+	margin-left: 85%;
 }
 #nextPhoto:hover {
 	opacity: 0.8

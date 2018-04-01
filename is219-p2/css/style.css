@@ -30,7 +30,12 @@ body {
 	position: absolute;
 	z-index: 3;
 	opacity: .8;
-	top: 0px;
+	top: 330px;
+	left: 300px;
+	moz-transform: : all 1s ease;
+	webkit-transform: : all 1s ease;
+	o-transform: : all 1s ease;
+	transform: : all 1s ease;
 }
 
 .thumbnail {

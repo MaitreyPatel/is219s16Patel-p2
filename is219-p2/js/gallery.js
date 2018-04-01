@@ -48,7 +48,7 @@ function swapPhoto() {
 		mCurrentIndex++;
 	}
 	const location = "Location: ",description = "Description: ",date = "Date: ";
-	var locationPhoto = mImages[mCurrentIndex].imgLocation;
+	var photoLocation = mImages[mCurrentIndex].imgLocation;
 	var descripPhoto = mImages[mCurrentIndex].description;
 	var datePhoto = mImages[mCurrentIndex].date;
 	
@@ -56,11 +56,11 @@ function swapPhoto() {
 	
 	$("#photo").attr("src", mImages[mCurrentIndex].imgPath);
 	console.log(mImages[mCurrentIndex].imgPath);
-	$(".location").text(location + locationPhoto);
+	$(".location").text(location + photoLocation);
 	$(".description").text(desciption + descripPhoto);
 	$(".date").text(date + datePhoto);
 	
-	console.log(locationPhoto);
+	console.log(photoLocation);
 	console.log(mCurrentIndex + " mCurrentIndex on swapPhoto");
 }
 function prevPhoto() {
@@ -74,7 +74,7 @@ function prevPhoto() {
 		mCurrentIndex--;
 	}
 	const location = "Location: ",description = "Description: ",date = "Date: ";
-	var locationPhoto = mImages[mCurrentIndex].imgLocation;
+	var photoLocation = mImages[mCurrentIndex].imgLocation;
 	var descripPhoto = mImages[mCurrentIndex].description;
 	var datePhoto = mImages[mCurrentIndex].date;
 	
@@ -82,11 +82,11 @@ function prevPhoto() {
 	
 	$("#photo").attr("src", mImages[mCurrentIndex].imgPath);
 	console.log(mImages[mCurrentIndex].imgPath);
-	$(".location").text(location + locationPhoto);
+	$(".location").text(location + photoLocation);
 	$(".description").text(desciption + descripPhoto);
 	$(".date").text(date + datePhoto);
 	
-	console.log(locationPhoto);
+	console.log(photoLocation);
 	console.log(mCurrentIndex + " mCurrentIndex on swapPhoto");
 }
 

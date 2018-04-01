@@ -31,21 +31,21 @@ function animate() {
 }
 
 /************* DO NOT TOUCH CODE ABOVE THIS LINE ***************/
+// Counter for the mImages array
 var mCurrentIndex = null;
 function swapPhoto() {
 	//Add code here to access the #slideShow element.
 	//Access the img element and replace its source
 	//with a new image from your images array which is loaded 
 	//from the JSON string
-	if (mCurrentIndex = 0) {
+	if (mCurrentIndex = null) {
 		mCurrentIndex = 0;
 	}
-	else if (mCurrentIndex == null){
+	else if (mCurrentIndex == mImages.length - 1){
 		mCurrentIndex = 0;
 	}
 	else {
 		mCurrentIndex++;
-		console.log(mCurrentIndex);
 	}
 	const location = "Location: ",description = "Description: ",date = "Date: ";
 	var locationPhoto = mImages[mCurrentIndex].location;
@@ -63,9 +63,34 @@ function swapPhoto() {
 	console.log(locationPhoto);
 	console.log(mCurrentIndex + " mCurrentIndex on swapPhoto");
 }
+function prevPhoto() {
+	if (mCurrentIndex = null) {
+		mCurrentIndex = mImages.length -1;
+	}
+	else if (mCurrentIndex == 0){
+		mCurrentIndex = mImages.length -1;
+	}
+	else {
+		mCurrentIndex--;
+	}
+	const location = "Location: ",description = "Description: ",date = "Date: ";
+	var locationPhoto = mImages[mCurrentIndex].location;
+	var descripPhoto = mImages[mCurrentIndex].description;
+	var datePhoto = mImages[mCurrentIndex].date;
+	
+	
+	
+	$("photo").attr("src", mImages[mCurrentIndex].path);
+	console.log(mImages[mCurrentIndex].path);
+	$(".location").text(location + locationPhoto);
+	$(".description").text(desciption + descripPhoto);
+	$(".date").text(date + datePhoto);
+	
+	console.log(locationPhoto);
+	console.log(mCurrentIndex + " mCurrentIndex on swapPhoto");
+}
 
-// Counter for the mImages array
-var mCurrentIndex = 0;
+
 
 // XMLHttpRequest variable
 var mRequest = new XMLHttpRequest();

@@ -153,16 +153,11 @@ $(document).ready( function() {
 
 	$('img.moreIndicator').click( function(){
 		$('.details').eq(0).toggle();
+		$(this).toggleClass("rot90");
+		$(this).toggleClass("rot270");
 	});
 
-	$(".moreIndicator").click( function(){
-		if( $(".moreIndicator").hasClass("rot90")){
-			$(".moreIndicator").attr("class", "moreIndicator rot270");
-		}
-		else{
-			$(".moreIndicator").attr("class", "moreIndicator rot90");
-		};
-	});
+	
 
 	$('#prevPhoto').click( function(){
 		mLastFrameTime = 0;

@@ -94,6 +94,7 @@ function prevPhoto() {
 
 // XMLHttpRequest variable
 var mRequest = new XMLHttpRequest();
+var m2Request = new XMLHttpRequest();
 // Array holding GalleryImage objects (see below).
 var mImages = [];
 
@@ -113,14 +114,38 @@ mRequest.onreadystatechange = function() {
 		}
 	}
 };
+
+m2Request.onreadystatechange = function() {
+  // Do something interesting if file is opened successfully
+  if (m2Request.readyState == 4 && m2Request.status == 200) {
+    try {
+      // Let’s try and see if we can parse JSON
+      var m2Json = JSON.parse(m2Request.responseText);
+
+      for (var i = 0; i < m2Json.images.length; i++){
+      	mImages.push(new GalleryImage(m2Json.images[i].imgPath, m2Json.images[i].imgLocation, m2Json.images[i].description, m2Json.images[i].date));
+      }
+      // Let’s print out the JSON; It will likely show as “obj”
+      console.log(m2Json.images);
+      console.log(m2Json.images[0].imgPath);
+
+     
+    } catch (err) {
+      console.log(err.message)
+    }
+  }
+};
 				
 mRequest.open("GET", mURL, true);
 mRequest.send();
 
+m2Request.open("GET", m2URL, true);
+m2Request.send();
+
 /* URL for the JSON to load by default */
 // Some options for you are: images.json, images.short.json; you will need to create your own extra.json later
 var mUrl = 'images.json';
-
+var m2URL = 'extra.json';
 
 
 //You can optionally use the following function as your event callback for loading the source of Images from your json data (for HTMLImageObject).

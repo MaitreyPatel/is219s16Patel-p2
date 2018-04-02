@@ -46,7 +46,7 @@ var $_GET = getQueryParams(document.location.search);
 
 var mURL = "images.json";
 
-if ($_GET["json"] != undefined){
+if ($_GET["json"] != "extra.json"){
 	mURL = $_GET["json"];
 }
 // Counter for the mImages array
@@ -112,9 +112,6 @@ function PrevPhoto(){
 var mRequest = new XMLHttpRequest();
 
 
-
-mRequest.open("GET", mURL, true);
-mRequest.send();
 
 
 

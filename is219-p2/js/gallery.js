@@ -113,8 +113,6 @@ var mRequest = new XMLHttpRequest();
 
 
 
-
-
 // Array holding GalleryImage objects (see below).
 var mImages = [];
 
@@ -142,6 +140,8 @@ mRequest.onreadystatechange = function() {
   }
 };
 
+mRequest.open("GET", mURL, true);
+mRequest.send();
 
 
 

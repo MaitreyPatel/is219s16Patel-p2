@@ -44,9 +44,10 @@ function getQueryParams(qs) {
 }
 var $_GET = getQueryParams(document.location.search);
 
+var mJson;
 var mURL = "images.json";
 
-if ($_GET["json"] != "extra.json"){
+if ($_GET["json"] != undefined){
 	mURL = $_GET["json"];
 }
 // Counter for the mImages array

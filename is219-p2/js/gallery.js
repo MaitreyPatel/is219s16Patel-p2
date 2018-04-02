@@ -31,25 +31,6 @@ function animate() {
 }
 
 /************* DO NOT TOUCH CODE ABOVE THIS LINE ***************/
-function getQueryParams(qs) {
-	qs = qs.aplit("+").join("");
-	var params = {}
-		tokens,
-		re = /[?&]?([^=]+)=([^&]*)/g;
-	while (token = re.exec(qs)) {
-		params[decodeURIComponent(tokens[1])]
-			= decodeURIComponent(tokens[2]);
-	}
-	return params;
-}
-var $_GET = getQueryParams(document.location.search);
-
-var mJson;
-var mURL = "images.json";
-
-if ($_GET["json"] != undefined){
-	mURL = $_GET["json"];
-}
 // Counter for the mImages array
 var mCurrentIndex = null;
 
@@ -110,9 +91,17 @@ function PrevPhoto(){
 // Some options for you are: images.json, images.short.json; you will need to create your own extra.json later
 
 // XMLHttpRequest variable
+var mURL = "images.json";
 var mRequest = new XMLHttpRequest();
 
+var m2URL = "extra.json";
+var m2Request = new XMLHttpRequest();
 
+mRequest.open("GET", mURL, true);
+mRequest.send();
+
+m2Request.open("GET", mURL2, true);
+m2Request.send();
 
 // Array holding GalleryImage objects (see below).
 var mImages = [];
@@ -141,8 +130,6 @@ mRequest.onreadystatechange = function() {
   }
 };
 
-mRequest.open("GET", mURL, true);
-mRequest.send();
 
 
 

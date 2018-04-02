@@ -109,6 +109,12 @@ function PrevPhoto(){
 // Some options for you are: images.json, images.short.json; you will need to create your own extra.json later
 
 // XMLHttpRequest variable
+var mRequest = new XMLHttpRequest();
+
+
+
+mRequest.open("GET", mURL, true);
+mRequest.send();
 
 
 

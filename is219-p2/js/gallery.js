@@ -102,7 +102,7 @@ function PrevPhoto(){
 	$(".description").text(description + photoDesc);
 	$(".date").text(date + photoDate);
 
-	console.log(photo Location);
+	console.log(photoLocation);
 	console.log(mCurrentIndex + " mCurrentIndex on swapPhoto");
 }
 /* URL for the JSON to load by default */

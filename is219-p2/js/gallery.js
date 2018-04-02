@@ -15,18 +15,18 @@
 
 animate();
 
-var lastFrame = 0;
-var timeWait = 5000; //time in ms
+var mLastFrameTime = 0;
+var mWaitTime = 5000; //time in ms
 function animate() {
     requestAnimFrame( animate );
 	var currentTime = new Date().getTime();
-	if (lastFrame === 0) {
-		lastFrame = currentTime;
+	if (mLastFrameTime === 0) {
+		mLastFrameTime = currentTime;
 	}
 
-	if ((currentTime - lastFrame) > timeWait) {
+	if ((currentTime - mLastFrameTime) > mWaitTime) {
 		swapPhoto();
-		lastFrame = currentTime;
+		mLastFrameTime = currentTime;
 	}
 }
 
@@ -49,7 +49,7 @@ function swapPhoto() {
 
 	else { 
 		mCurrentIndex++; 
-	}
+		}
 
 	const location = "Location: ", description = "Description: ", date = "Date: ";
 	var photoLocation = mImages[mCurrentIndex].imgLocation;
@@ -94,14 +94,8 @@ function PrevPhoto(){
 var mURL = "images.json";
 var mRequest = new XMLHttpRequest();
 
-var m2URL = "extra.json";
-var m2Request = new XMLHttpRequest();
-
-mRequest.open("GET", mURL, true);
-mRequest.send();
-
-m2Request.open("GET", m2URL, true);
-m2Request.send();
+var mURL2 = "extra.json";
+var mRequest2 = new XMLHttpRequest();
 
 // Array holding GalleryImage objects (see below).
 var mImages = [];
@@ -111,9 +105,6 @@ mRequest.onreadystatechange = function() {
   // Do something interesting if file is opened successfully
   if (mRequest.readyState == 4 && mRequest.status == 200) {
     try {
-		/* URL for the JSON to load by default */
-		// Some options for you are: images.json, images.short.json; you will need to create your own extra.json later
-
       var mJson = JSON.parse(mRequest.responseText);
 
       for (var i = 0; i < mJson.images.length; i++){
@@ -130,19 +121,19 @@ mRequest.onreadystatechange = function() {
   }
 };
 
-m2Request.onreadystatechange = function() {
+mRequest2.onreadystatechange = function() {
   // Do something interesting if file is opened successfully
-  if (m2Request.readyState == 4 && m2Request.status == 200) {
+  if (mRequest2.readyState == 4 && mRequest2.status == 200) {
     try {
       // Let’s try and see if we can parse JSON
-      var m2Json = JSON.parse(m2Request.responseText);
+      var mJson2 = JSON.parse(mRequest2.responseText);
 
-      for (var i = 0; i < m2Json.images.length; i++){
-      	mImages.push(new GalleryImage(m2Json.images[i].imgPath, m2Json.images[i].imgLocation, m2Json.images[i].description, m2Json.images[i].date));
+      for (var i = 0; i < mJson2.images.length; i++){
+      	mImages.push(new GalleryImage(mJson2.images[i].imgPath, mJson2.images[i].imgLocation, mJson2.images[i].description, mJson2.images[i].date));
       }
       // Let’s print out the JSON; It will likely show as “obj”
-      console.log(m2Json.images);
-      console.log(m2Json.images[0].imgPath);
+      console.log(mJson2.images);
+      console.log(mJson2.images[0].imgPath);
 
      
     } catch (err) {
@@ -151,7 +142,11 @@ m2Request.onreadystatechange = function() {
   }
 };
 
+mRequest.open("GET", mURL, true);
+mRequest.send();
 
+mRequest2.open("GET", mURL2, true);
+mRequest2.send();
 
 //You can optionally use the following function as your event callback for loading the source of Images from your json data (for HTMLImageObject).
 //@param A GalleryImage object. Use this method for an event handler for loading a gallery Image object (optional).
@@ -180,13 +175,13 @@ $(document).ready( function() {
 	});
 
 	$('#prevPhoto').click( function(){
-		lastFrame = 0;
+		mLastFrameTime = 0;
 		PrevPhoto();
 		animate();
 	});
 
 	$('#nextPhoto').click(function(){
-		lastFrame = 0;
+		mLastFrameTime = 0;
 		swapPhoto();
 		animate();
 	});

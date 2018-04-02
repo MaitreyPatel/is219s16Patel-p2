@@ -131,8 +131,7 @@ mRequest.onreadystatechange = function() {
       	mImages.push(new GalleryImage(mJson.images[i].imgPath, mJson.images[i].imgLocation, mJson.images[i].description, mJson.images[i].date));
       }
       
-      console.log(mJson.images);
-      console.log(mJson.images[0].imgPath);
+      console.log(mJson)
 
      
     } catch (err) {

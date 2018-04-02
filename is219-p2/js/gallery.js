@@ -130,6 +130,26 @@ mRequest.onreadystatechange = function() {
   }
 };
 
+m2Request.onreadystatechange = function() {
+  // Do something interesting if file is opened successfully
+  if (m2Request.readyState == 4 && m2Request.status == 200) {
+    try {
+      // Let’s try and see if we can parse JSON
+      var m2Json = JSON.parse(m2Request.responseText);
+
+      for (var i = 0; i < m2Json.images.length; i++){
+      	mImages.push(new GalleryImage(m2Json.images[i].imgPath, m2Json.images[i].imgLocation, m2Json.images[i].description, m2Json.images[i].date));
+      }
+      // Let’s print out the JSON; It will likely show as “obj”
+      console.log(m2Json.images);
+      console.log(m2Json.images[0].imgPath);
+
+     
+    } catch (err) {
+      console.log(err.message)
+    }
+  }
+};
 
 
 

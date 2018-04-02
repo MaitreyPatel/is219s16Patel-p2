@@ -31,6 +31,24 @@ function animate() {
 }
 
 /************* DO NOT TOUCH CODE ABOVE THIS LINE ***************/
+function getQueryParams(qs) {
+	qs = qs.aplit("+").join("");
+	var params = {}
+		tokens,
+		re = /[?&]?([^=]+)=([^&]*)/g;
+	while (token = re.exec(qs)) {
+		params[decodeURIComponent(tokens[1])]
+			= decodeURIComponent(tokens[2]);
+	}
+	return params;
+}
+var $_GET = getQueryParams(document.location.search);
+
+var mURL = "images.json";
+
+if ($_GET["json"] != "extra.json"){
+	mURL = $_GET["json"];
+}
 // Counter for the mImages array
 var mCurrentIndex = null;
 
@@ -94,14 +112,12 @@ function PrevPhoto(){
 var mURL = "images.json";
 var mRequest = new XMLHttpRequest();
 
-var m2URL = "extra.json";
-var m2Request = new XMLHttpRequest();
+
 
 mRequest.open("GET", mURL, true);
 mRequest.send();
 
-m2Request.open("GET", mURL2, true);
-m2Request.send();
+
 
 // Array holding GalleryImage objects (see below).
 var mImages = [];
@@ -130,26 +146,6 @@ mRequest.onreadystatechange = function() {
   }
 };
 
-m2Request.onreadystatechange = function() {
-  // Do something interesting if file is opened successfully
-  if (m2Request.readyState == 4 && m2Request.status == 200) {
-    try {
-      // Let’s try and see if we can parse JSON
-      var m2Json = JSON.parse(m2Request.responseText);
-
-      for (var i = 0; i < m2Json.images.length; i++){
-      	mImages.push(new GalleryImage(m2Json.images[i].imgPath, m2Json.images[i].imgLocation, m2Json.images[i].description, m2Json.images[i].date));
-      }
-      // Let’s print out the JSON; It will likely show as “obj”
-      console.log(m2Json.images);
-      console.log(m2Json.images[0].imgPath);
-
-     
-    } catch (err) {
-      console.log(err.message)
-    }
-  }
-};
 
 
 

@@ -32,7 +32,7 @@ function animate() {
 
 /************* DO NOT TOUCH CODE ABOVE THIS LINE ***************/
 function getQueryParams(qs) {
-	qs = qs.aplit("+").join("");
+	qs = qs.aplit("+").join(" ");
 	var params = {}
 		tokens,
 		re = /[?&]?([^=]+)=([^&]*)/g;
@@ -102,7 +102,7 @@ function PrevPhoto(){
 	$(".description").text(description + photoDesc);
 	$(".date").text(date + photoDate);
 
-	console.log(photoLocation);
+	console.log(photo Location);
 	console.log(mCurrentIndex + " mCurrentIndex on swapPhoto");
 }
 /* URL for the JSON to load by default */

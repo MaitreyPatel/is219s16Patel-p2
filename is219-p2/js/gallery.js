@@ -100,7 +100,7 @@ var m2Request = new XMLHttpRequest();
 mRequest.open("GET", mURL, true);
 mRequest.send();
 
-m2Request.open("GET", mURL2, true);
+m2Request.open("GET", m2URL, true);
 m2Request.send();
 
 // Array holding GalleryImage objects (see below).

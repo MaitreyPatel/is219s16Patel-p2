@@ -32,7 +32,7 @@ function animate() {
 
 /************* DO NOT TOUCH CODE ABOVE THIS LINE ***************/
 function getQueryParams(qs) {
-	qs = qs.aplit("+").join(" ");
+	qs = qs.aplit("+").join("");
 	var params = {}
 		tokens,
 		re = /[?&]?([^=]+)=([^&]*)/g;
